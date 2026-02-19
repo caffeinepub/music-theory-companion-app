@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 5,
+  "summary": "Audio pitch detection app with visual note/frequency display",
+  "architectural_notes": [
+    "UI displays detected notes and frequencies from ambient sound",
+    "App has a 'lock key' feature to freeze the detected key",
+    "Note/frequency display fields must maintain consistent height to prevent layout shift"
+  ],
+  "known_issues": [
+    "Note/frequency fields cause vertical layout shift when values change or are empty"
+  ],
+  "isFixRequest": true,
+  "existing_features": [
+    {
+      "id": "feature-modify-the-pitchdisplay-component-to-always-render-a-fixed-height-placeholder-e-g-or-0-for-the-note-field-when-no-note-is-detected-preventing-the-field-from-being-empty",
+      "title": "Modify the PitchDisplay component to always render a fixed-height placeholder (e.g., '—' or '0') for the note field when no note is detected, preventing the field from being empty",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-modify-the-pitchdisplay-component-to-always-render-a-fixed-height-placeholder-e-g-or-0-hz-for-the-frequency-field-when-no-frequency-is-detected-preventing-the-field-from-being-empty",
+      "title": "Modify the PitchDisplay component to always render a fixed-height placeholder (e.g., '—' or '0 Hz') for the frequency field when no frequency is detected, preventing the field from being empty",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-pitchdisplay-component-maintains-consistent-vertical-spacing-and-positioning-regardless-of-whether-note-frequency-values-are-detected-or-placeholders-are-shown-even-after-the-key-has-been-locked-in",
+      "title": "Ensure the PitchDisplay component maintains consistent vertical spacing and positioning regardless of whether note/frequency values are detected or placeholders are shown, even after the key has been locked in",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-review-and-verify-the-pitchdisplay-component-implementation-to-ensure-fixed-height-placeholders-for-note-0-hz-for-frequency-are-correctly-applied-when-no-pitch-is-detected-preventing-any-layout-shifts",
+      "title": "Review and verify the PitchDisplay component implementation to ensure fixed-height placeholders ('—' for note, '0 Hz' for frequency) are correctly applied when no pitch is detected, preventing any layout shifts",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-resolve-any-syntax-errors-type-mismatches-or-missing-imports-that-may-have-caused-the-previous-deployment-failure",
+      "title": "Resolve any syntax errors, type mismatches, or missing imports that may have caused the previous deployment failure",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-successfully-build-and-deploy-the-application-to-the-internet-computer",
+      "title": "Successfully build and deploy the application to the Internet Computer",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [],
+  "projectName": "Music Theory Companion",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

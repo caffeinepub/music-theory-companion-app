@@ -29,9 +29,9 @@ export default function PitchDisplay({ pitch, note, activeKey }: PitchDisplayPro
       <div className="grid grid-cols-2 gap-4">
         <div className="space-y-2">
           <p className="text-xs text-muted-foreground">Detected Note</p>
-          <div className="flex items-baseline gap-2">
+          <div className="flex items-baseline gap-2 min-h-[2.5rem]">
             <p className="text-3xl font-bold font-mono">
-              {note || '--'}
+              {note || '—'}
             </p>
             {note && (
               <span
@@ -49,9 +49,11 @@ export default function PitchDisplay({ pitch, note, activeKey }: PitchDisplayPro
 
         <div className="space-y-2">
           <p className="text-xs text-muted-foreground">Frequency</p>
-          <p className="text-3xl font-bold font-mono">
-            {pitch ? `${pitch.toFixed(1)} Hz` : '-- Hz'}
-          </p>
+          <div className="min-h-[2.5rem]">
+            <p className="text-3xl font-bold font-mono">
+              {pitch ? `${pitch.toFixed(1)} Hz` : '0 Hz'}
+            </p>
+          </div>
         </div>
       </div>
 

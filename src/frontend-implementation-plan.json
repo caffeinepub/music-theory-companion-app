@@ -1,0 +1,91 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Rebuild and deploy with layout fixes",
+  "requirements": [
+    {
+      "id": "REQ-4",
+      "summary": "Review and verify PitchDisplay component fixed-height placeholders to prevent layout shifts",
+      "acceptanceCriteria": [
+        "The note field displays '—' when no note is detected",
+        "The frequency field displays '0 Hz' when no frequency is detected",
+        "No vertical layout shift occurs when pitch values change from detected to undetected states",
+        "The component maintains consistent spacing after key lock-in"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/PitchDisplay.tsx",
+          "operation": "modify",
+          "description": "Review and verify that fixed-height placeholders are correctly implemented: ensure the note field displays '—' (em dash) when no pitch is detected, the frequency field displays '0 Hz' when no frequency is detected, and both fields maintain consistent height and spacing to prevent any layout shifts during state transitions from detected to undetected pitch values"
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Resolve syntax errors, type mismatches, and missing imports causing deployment failures",
+      "acceptanceCriteria": [
+        "TypeScript compilation succeeds without errors",
+        "All imports are correctly resolved",
+        "No runtime errors occur during component rendering"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/PitchDisplay.tsx",
+          "operation": "modify",
+          "description": "Review for any TypeScript type mismatches, incorrect prop types, or missing imports; ensure all hooks and utilities are properly imported and used according to their type signatures"
+        },
+        {
+          "path": "frontend/src/components/AudioAnalyzer.tsx",
+          "operation": "modify",
+          "description": "Verify all imports are present, check for type errors in pitch detection logic, ensure Web Audio API types are correctly handled, and confirm all state variables and callbacks have proper types"
+        },
+        {
+          "path": "frontend/src/components/KeySelector.tsx",
+          "operation": "modify",
+          "description": "Check for any type mismatches in props, event handlers, or state management; ensure all component imports and callback types are correct"
+        },
+        {
+          "path": "frontend/src/components/CircleOfFifths.tsx",
+          "operation": "modify",
+          "description": "Verify SVG rendering logic has no type errors, check that all prop types are correctly defined, and ensure animation and event handler types are properly typed"
+        },
+        {
+          "path": "frontend/src/components/TheoryPanel.tsx",
+          "operation": "modify",
+          "description": "Review custom hook usage for correct types, verify backend data types match expected shapes, and ensure loading states and null handling are properly typed"
+        },
+        {
+          "path": "frontend/src/pages/MusicTheoryApp.tsx",
+          "operation": "modify",
+          "description": "Check for any type mismatches in component composition, verify all prop passing is type-safe, ensure state management and callback types are correct, and confirm microphone permission hook integration has proper types"
+        },
+        {
+          "path": "frontend/src/lib/musicTheory.ts",
+          "operation": "modify",
+          "description": "Verify all function signatures have correct types, ensure return types match usage throughout the application, and check array operations and mathematical calculations for type safety"
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Successfully build and deploy the application to the Internet Computer",
+      "acceptanceCriteria": [
+        "Backend canister deploys successfully",
+        "Frontend assets deploy successfully",
+        "Application is accessible via the deployed URL"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Verify the root application setup is correct with QueryClient and ThemeProvider properly configured for production deployment; ensure no development-only code blocks deployment"
+        },
+        {
+          "path": "frontend/src/main.tsx",
+          "operation": "modify",
+          "description": "Confirm the application entry point correctly initializes React, QueryClient, and InternetIdentityProvider for production; verify all imports resolve correctly for the build process"
+        }
+      ]
+    }
+  ]
+}

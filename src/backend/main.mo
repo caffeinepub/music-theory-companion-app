@@ -2,8 +2,6 @@ import Map "mo:core/Map";
 import Text "mo:core/Text";
 import List "mo:core/List";
 
-
-
 actor {
   var chordProgressions = Map.empty<Text, [Text]>();
   var scaleInformation = Map.empty<Text, Text>();

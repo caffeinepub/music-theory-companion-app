@@ -1,0 +1,71 @@
+{
+  "kind": "build_request",
+  "title": "Rebuild and deploy with layout fixes",
+  "projectName": "Music Theory Companion",
+  "priority": "high",
+  "requirements": [
+    {
+      "id": "REQ-4",
+      "text": "Review and verify the PitchDisplay component implementation to ensure fixed-height placeholders ('—' for note, '0 Hz' for frequency) are correctly applied when no pitch is detected, preventing any layout shifts",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-user-please"
+        ],
+        "quotes": [
+          "please"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The note field displays '—' when no note is detected",
+        "The frequency field displays '0 Hz' when no frequency is detected",
+        "No vertical layout shift occurs when pitch values change from detected to undetected states",
+        "The component maintains consistent spacing after key lock-in"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Resolve any syntax errors, type mismatches, or missing imports that may have caused the previous deployment failure",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-user-please"
+        ]
+      },
+      "acceptanceCriteria": [
+        "TypeScript compilation succeeds without errors",
+        "All imports are correctly resolved",
+        "No runtime errors occur during component rendering"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Successfully build and deploy the application to the Internet Computer",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-user-please"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Backend canister deploys successfully",
+        "Frontend assets deploy successfully",
+        "Application is accessible via the deployed URL"
+      ]
+    }
+  ],
+  "constraints": [
+    "Maintain all existing functionality in the AudioAnalyzer, CircleOfFifths, and KeySelector components",
+    "Preserve the current OKLCH color system and dark mode theming",
+    "Keep the single-actor Motoko backend architecture unchanged"
+  ],
+  "nonGoals": [
+    "Adding new features beyond fixing the deployment",
+    "Changing the UI design or layout beyond the fixed-height placeholder fix",
+    "Modifying backend logic or data structures"
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}
