@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* OKLCH Color System - Light Mode */
+    --background: oklch(98% 0.01 280);
+    --foreground: oklch(20% 0.02 280);
+    --card: oklch(100% 0 0);
+    --card-foreground: oklch(20% 0.02 280);
+    --popover: oklch(100% 0 0);
+    --popover-foreground: oklch(20% 0.02 280);
+    
+    /* Primary: Purple/Violet */
+    --primary: oklch(55% 0.22 290);
+    --primary-foreground: oklch(98% 0.01 290);
+    
+    /* Secondary: Lighter Purple */
+    --secondary: oklch(92% 0.05 290);
+    --secondary-foreground: oklch(25% 0.02 290);
+    
+    /* Accent: Teal */
+    --accent: oklch(65% 0.15 180);
+    --accent-foreground: oklch(98% 0.01 180);
+    
+    /* Muted */
+    --muted: oklch(95% 0.02 280);
+    --muted-foreground: oklch(50% 0.02 280);
+    
+    /* Success: Green */
+    --success: oklch(60% 0.18 145);
+    --success-foreground: oklch(98% 0.01 145);
+    
+    /* Warning: Orange */
+    --warning: oklch(70% 0.18 50);
+    --warning-foreground: oklch(20% 0.02 50);
+    
+    /* Destructive: Red */
+    --destructive: oklch(55% 0.22 25);
+    --destructive-foreground: oklch(98% 0.01 25);
+    
+    /* Border & Input */
+    --border: oklch(88% 0.02 280);
+    --input: oklch(88% 0.02 280);
+    --ring: oklch(55% 0.22 290);
+    
+    /* Radius */
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* OKLCH Color System - Dark Mode */
+    --background: oklch(15% 0.02 280);
+    --foreground: oklch(95% 0.01 280);
+    --card: oklch(18% 0.02 280);
+    --card-foreground: oklch(95% 0.01 280);
+    --popover: oklch(18% 0.02 280);
+    --popover-foreground: oklch(95% 0.01 280);
+    
+    /* Primary: Brighter Purple/Violet for dark mode */
+    --primary: oklch(65% 0.25 290);
+    --primary-foreground: oklch(15% 0.02 290);
+    
+    /* Secondary: Darker Purple */
+    --secondary: oklch(25% 0.05 290);
+    --secondary-foreground: oklch(95% 0.01 290);
+    
+    /* Accent: Brighter Teal */
+    --accent: oklch(70% 0.18 180);
+    --accent-foreground: oklch(15% 0.02 180);
+    
+    /* Muted */
+    --muted: oklch(25% 0.02 280);
+    --muted-foreground: oklch(65% 0.02 280);
+    
+    /* Success: Brighter Green */
+    --success: oklch(65% 0.20 145);
+    --success-foreground: oklch(15% 0.02 145);
+    
+    /* Warning: Brighter Orange */
+    --warning: oklch(75% 0.20 50);
+    --warning-foreground: oklch(15% 0.02 50);
+    
+    /* Destructive: Brighter Red */
+    --destructive: oklch(60% 0.25 25);
+    --destructive-foreground: oklch(95% 0.01 25);
+    
+    /* Border & Input */
+    --border: oklch(30% 0.02 280);
+    --input: oklch(30% 0.02 280);
+    --ring: oklch(65% 0.25 290);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .text-success {
+    color: hsl(var(--success));
+  }
+  .bg-success {
+    background-color: hsl(var(--success));
+  }
+  .border-success {
+    border-color: hsl(var(--success));
+  }
+  .text-success\/10 {
+    color: hsl(var(--success) / 0.1);
+  }
+  .bg-success\/10 {
+    background-color: hsl(var(--success) / 0.1);
+  }
+  .border-success\/20 {
+    border-color: hsl(var(--success) / 0.2);
+  }
+}
