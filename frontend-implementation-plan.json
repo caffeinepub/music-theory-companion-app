@@ -1,0 +1,85 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Fix scales and chord charts not displaying for manual and locked-in keys",
+  "requirements": [
+    {
+      "id": "REQ-7",
+      "summary": "Ensure TheoryPanel displays chord progressions and scales when key is set manually via KeySelector",
+      "acceptanceCriteria": [
+        "When a user selects a note and mode from the KeySelector dropdowns and confirms the selection, the TheoryPanel immediately displays chord progressions and scales for that key.",
+        "The TheoryPanel does not remain empty or show a loading state indefinitely after a manual key selection.",
+        "Chord charts and scale information are visually rendered in the TheoryPanel for any manually selected key."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/MusicTheoryApp.tsx",
+          "operation": "modify",
+          "description": "Audit and fix the state management for manually selected keys to ensure the activeKey state is correctly updated when KeySelector triggers a manual key change, and verify that this state is properly passed as a prop to TheoryPanel component."
+        },
+        {
+          "path": "frontend/src/components/KeySelector.tsx",
+          "operation": "modify",
+          "description": "Review the key selection callback mechanism to ensure that when a user confirms a manual key selection, the parent component (MusicTheoryApp) receives the correct key value and updates its state immediately."
+        },
+        {
+          "path": "frontend/src/components/TheoryPanel.tsx",
+          "operation": "modify",
+          "description": "Verify that the component correctly receives the activeKey prop and that React Query hooks (useChordProgressions, useScaleInformation) are invoked with the current key value, ensuring they trigger data fetches whenever the key changes. Add console logging if needed to debug missing renders."
+        }
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "summary": "Ensure TheoryPanel displays chord progressions and scales when key is auto-detected and locked via AudioAnalyzer",
+      "acceptanceCriteria": [
+        "When the AudioAnalyzer transitions to the 'locked' state with a detected key, the TheoryPanel displays chord progressions and scales for that locked key.",
+        "The TheoryPanel updates its content whenever the locked key changes.",
+        "Chord charts and scale information remain visible and do not disappear after the key is locked in."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/MusicTheoryApp.tsx",
+          "operation": "modify",
+          "description": "Audit the state update logic that handles auto-detected keys from AudioAnalyzer to ensure that when the component locks in a detected key, the activeKey state in MusicTheoryApp is updated correctly and propagated to TheoryPanel."
+        },
+        {
+          "path": "frontend/src/components/AudioAnalyzer.tsx",
+          "operation": "modify",
+          "description": "Review the key lock-in callback mechanism to ensure that when the analyzer transitions to the locked state with a detected key, it invokes the parent callback with the correct key value so MusicTheoryApp can update its state."
+        },
+        {
+          "path": "frontend/src/components/TheoryPanel.tsx",
+          "operation": "modify",
+          "description": "Ensure that when the activeKey prop changes due to auto-detection lock-in, the React Query hooks re-fetch data and the component re-renders to display the new key's chord progressions and scales without clearing previous content prematurely."
+        }
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "summary": "Audit data flow between MusicTheoryApp, KeySelector, AudioAnalyzer, and TheoryPanel to fix state management issues preventing display of music theory data",
+      "acceptanceCriteria": [
+        "The active key state (from both manual selection and auto-lock) is consistently passed to TheoryPanel as a prop or shared state.",
+        "TheoryPanel's React Query hooks receive the correct key argument and fetch data whenever the key changes.",
+        "No console errors related to undefined key values or failed data fetches occur during key selection or lock-in."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/MusicTheoryApp.tsx",
+          "operation": "modify",
+          "description": "Perform a comprehensive audit of the state flow: verify that activeKey state is initialized correctly, updated by both KeySelector and AudioAnalyzer callbacks, and consistently passed to TheoryPanel. Check for race conditions, stale closures, or missing dependency arrays in useEffect hooks that might prevent state updates from propagating."
+        },
+        {
+          "path": "frontend/src/components/TheoryPanel.tsx",
+          "operation": "modify",
+          "description": "Audit the React Query hook invocations to ensure they use the activeKey prop directly (not a stale reference), verify that query keys match between hooks and invalidation logic, and confirm that hooks are enabled only when activeKey is defined. Add defensive checks for null/undefined key values and log any data fetch failures for debugging."
+        },
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Review the query key structure for useChordProgressions, useScaleInformation, and related hooks to ensure they invalidate correctly when the key changes. Verify that the backend calls (getChordProgressions, getScaleInformation) receive the key parameter and handle null responses gracefully."
+        }
+      ]
+    }
+  ]
+}

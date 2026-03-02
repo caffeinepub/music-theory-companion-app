@@ -1,0 +1,62 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-ensure-that-when-a-key-is-set-manually-via-the-keyselector-component-the-theorypanel-component-receives-and-correctly-renders-the-selected-key-s-chord-progressions-scales-and-other-music-theory-content",
+      "featureTitle": "Ensure that when a key is set manually via the KeySelector component, the TheoryPanel component receives and correctly renders the selected key's chord progressions, scales, and other music theory content.",
+      "files": [
+        "frontend/src/components/TheoryPanel.tsx",
+        "frontend/src/pages/MusicTheoryApp.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-ensure-that-when-the-key-is-auto-detected-and-locked-in-via-the-audioanalyzer-component-the-theorypanel-component-receives-the-locked-key-and-correctly-renders-its-chord-progressions-scales-and-music-theory-content",
+      "featureTitle": "Ensure that when the key is auto-detected and locked in via the AudioAnalyzer component, the TheoryPanel component receives the locked key and correctly renders its chord progressions, scales, and music theory content.",
+      "files": [
+        "frontend/src/components/TheoryPanel.tsx",
+        "frontend/src/pages/MusicTheoryApp.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-audit-the-data-flow-between-musictheoryapp-keyselector-audioanalyzer-and-theorypanel-to-identify-and-fix-any-state-management-issues-e-g-incorrect-prop-passing-stale-state-missing-re-renders-or-query-key-mismatches-that-prevent-the-theorypanel-from-receiving-and-displaying-the-active-key-s-music-theory-data",
+      "featureTitle": "Audit the data flow between MusicTheoryApp, KeySelector, AudioAnalyzer, and TheoryPanel to identify and fix any state management issues (e.g., incorrect prop passing, stale state, missing re-renders, or query key mismatches) that prevent the TheoryPanel from receiving and displaying the active key's music theory data.",
+      "files": [
+        "frontend/src/components/TheoryPanel.tsx",
+        "frontend/src/pages/MusicTheoryApp.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-9"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

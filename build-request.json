@@ -1,0 +1,74 @@
+{
+  "kind": "build_request",
+  "title": "Fix scales and chord charts not displaying for manual and locked-in keys",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-7",
+      "text": "Ensure that when a key is set manually via the KeySelector component, the TheoryPanel component receives and correctly renders the selected key's chord progressions, scales, and other music theory content.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-7"
+        ],
+        "quotes": [
+          "chord charts and scales and stuff never show up when I set the key manually"
+        ]
+      },
+      "acceptanceCriteria": [
+        "When a user selects a note and mode from the KeySelector dropdowns and confirms the selection, the TheoryPanel immediately displays chord progressions and scales for that key.",
+        "The TheoryPanel does not remain empty or show a loading state indefinitely after a manual key selection.",
+        "Chord charts and scale information are visually rendered in the TheoryPanel for any manually selected key."
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Ensure that when the key is auto-detected and locked in via the AudioAnalyzer component, the TheoryPanel component receives the locked key and correctly renders its chord progressions, scales, and music theory content.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-7"
+        ],
+        "quotes": [
+          "I don't think that they do properly even when the key is locked in"
+        ]
+      },
+      "acceptanceCriteria": [
+        "When the AudioAnalyzer transitions to the 'locked' state with a detected key, the TheoryPanel displays chord progressions and scales for that locked key.",
+        "The TheoryPanel updates its content whenever the locked key changes.",
+        "Chord charts and scale information remain visible and do not disappear after the key is locked in."
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "text": "Audit the data flow between MusicTheoryApp, KeySelector, AudioAnalyzer, and TheoryPanel to identify and fix any state management issues (e.g., incorrect prop passing, stale state, missing re-renders, or query key mismatches) that prevent the TheoryPanel from receiving and displaying the active key's music theory data.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-7"
+        ],
+        "quotes": [
+          "make sure that the scales and chords actually do show up"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The active key state (from both manual selection and auto-lock) is consistently passed to TheoryPanel as a prop or shared state.",
+        "TheoryPanel's React Query hooks receive the correct key argument and fetch data whenever the key changes.",
+        "No console errors related to undefined key values or failed data fetches occur during key selection or lock-in."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not modify files listed in frontend.immutablePaths.",
+    "Do not change the backend Motoko actor — it already serves the required music theory data."
+  ],
+  "nonGoals": [
+    "Adding new music theory content or categories beyond what the backend already provides.",
+    "Changing the visual design or layout of the TheoryPanel or KeySelector components.",
+    "Modifying the PitchDisplay component or its placeholder logic."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

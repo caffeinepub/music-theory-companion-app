@@ -1,0 +1,16 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-03-02T22:04:22.794Z",
+  "summary": "The diff implements fixes for all three requirements. MusicTheoryApp.tsx introduces separate manualKey and autoDetectedKey state with correct priority logic (manualKey || autoDetectedKey), TheoryPanel.tsx now falls back to locally-generated music theory data when the backend returns null/empty, musicTheory.ts adds client-side generators for chord progressions, scale degree chords, improvisation tips, and composition suggestions. These changes together address REQ-7, REQ-8, and REQ-9.",
+  "missing_requirements": [],
+  "hallucinated_features": [],
+  "confidence": 0.9,
+  "changed_files": [
+    "frontend-file-summaries.txt",
+    "frontend/src/components/TheoryPanel.tsx",
+    "frontend/src/lib/musicTheory.ts",
+    "frontend/src/pages/MusicTheoryApp.tsx",
+    "project_state.json"
+  ]
+}

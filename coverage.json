@@ -1,0 +1,72 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-03-02T22:04:22.798Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 3,
+    "implemented": 3,
+    "items": [
+      {
+        "id": "REQ-7",
+        "summary": "Ensure that when a key is set manually via the KeySelector component, the TheoryPanel component receives and correctly renders the selected key's chord progressions, scales, and other music theory content.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/MusicTheoryApp.tsx",
+          "frontend/src/components/KeySelector.tsx",
+          "frontend/src/components/TheoryPanel.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/MusicTheoryApp.tsx",
+          "frontend/src/components/TheoryPanel.tsx"
+        ]
+      },
+      {
+        "id": "REQ-8",
+        "summary": "Ensure that when the key is auto-detected and locked in via the AudioAnalyzer component, the TheoryPanel component receives the locked key and correctly renders its chord progressions, scales, and music theory content.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/MusicTheoryApp.tsx",
+          "frontend/src/components/AudioAnalyzer.tsx",
+          "frontend/src/components/TheoryPanel.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/MusicTheoryApp.tsx",
+          "frontend/src/components/TheoryPanel.tsx"
+        ]
+      },
+      {
+        "id": "REQ-9",
+        "summary": "Audit the data flow between MusicTheoryApp, KeySelector, AudioAnalyzer, and TheoryPanel to identify and fix any state management issues (e.g., incorrect prop passing, stale state, missing re-renders, or query key mismatches) that prevent the TheoryPanel from receiving and displaying the active key's music theory data.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/MusicTheoryApp.tsx",
+          "frontend/src/components/TheoryPanel.tsx",
+          "frontend/src/hooks/useQueries.ts"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/MusicTheoryApp.tsx",
+          "frontend/src/components/TheoryPanel.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "build-template/README.md",
+    "caffeine.lock.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/components/TheoryPanel.tsx",
+    "frontend/src/lib/musicTheory.ts",
+    "frontend/src/pages/MusicTheoryApp.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}
